@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Tweens</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      margin: 25px
+    }
+    .to-anim {
+      opacity: 0;
+      
+      background-color: blueviolet;
+    }
+
+    .from-anim {
+      opacity: 1;
+      background-color:cornflowerblue;
+      transform: translateX(500px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box to-anim"></div>
+  <div class="box from-anim"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script>
+
+    var toAnim = document.getElementsByClassName('to-anim'),
+        fromAnim = document.getElementsByClassName('from-anim');
+
+    // .to animation
+    gsap.to(toAnim, 2, { opacity: 1, x: 500, ease: Back.easeOut.config(2) })
+    // .from animation
+    gsap.from(fromAnim, 2, { opacity: 0, x: 0, y: 100, ease: Back.easeOut.config(2) })
+    // .set "animation"
+    gsap.set(toAnim, { css: {"background-color":"aquamarine" }, delay: 3} )
+
+  </script>
+</body>
+</html>

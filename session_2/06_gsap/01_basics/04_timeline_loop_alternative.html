@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+
+    #box1 {
+      background-color: blueviolet;
+    }
+
+    #box2 {
+      background-color: cornflowerblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="box1"></div>
+  <div class="box" id="box2"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+  <script>
+
+    var box1 = document.getElementById('box1')
+    var box2 = document.getElementById('box2')
+
+    var timeline = new gsap.timeline()
+
+    timeline.add('start')
+      .pause()
+      .to(box1, 1, {x:500, y: 200, rotate: -360}, 'start')
+      .to(box2, 1, {x:500, y: 200, rotate: -360, onComplete: restart}, 'start')
+      // .set(box, {onComplete: restart})
+
+      function done() {
+        timeline.play('start')
+      }
+
+      var i = 0;
+      function restart() {
+        if (i < 3) {
+          gsap.to([box1, box2], 1, {x:0, y:0, onComplete: done})
+          i++;
+        } else {
+
+        }
+      }
+      
+      setTimeout(function(){
+        timeline.play('start')
+      }, 1000)
+  </script>
+</body>
+</html>

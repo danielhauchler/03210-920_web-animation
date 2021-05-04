@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 100%;
+      height: 2000px;
+    }
+
+    video {
+      position: fixed;
+      width: 800px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <video mute pause preload="auto">
+      <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+    </video>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+  <script>
+    var controller = new ScrollMagic.Controller(),
+    scene,
+    video = document.getElementsByTagName('video')[0],
+    videoDuration;
+
+    // Run program on video load
+    video.onloadeddata = function() {
+        
+        // Grab the target video duration
+        videoDuration = video.duration;
+        console.log(video.duration);
+
+        // Tween the video from beginning to end
+        var videoTween = TweenMax.to(video, 1, {currentTime: videoDuration, ease: Quad.easeOut, overwrite:true, pause:true });
+
+        // Build ScrollMagic Scene
+        var scene = new ScrollMagic.Scene({triggerElement: "#container", duration: 20000, offset: 400})
+        .setTween(videoTween) // Add tween to the scene
+        .addIndicators({
+          name: "video play",
+          colorTrigger: "transparent",
+          colorStart: "transparent",
+          colorEnd: "transparent"
+        })
+        .addTo(controller); // Add scene to the controller
+    };
+  </script>
+</body>
+</html>

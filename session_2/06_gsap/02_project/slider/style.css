@@ -1,0 +1,80 @@
+#slider {
+  position: relative;
+  width: 960px;
+  height: 350px;
+  margin: 0 auto;
+  font-family: 'Roboto Slab', serif;
+  overflow: hidden;
+}
+
+#slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#slide-1,
+#slide-2,
+#slide-3 {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#slide-1 #slide-1-bg {
+  width: 100%;
+  height: 100%;
+  background-image: url("images/panel1_city.jpg");
+  background-size: 960px 350px;
+  transform-origin: 460px 150px;
+}
+
+#slide-1-headline {
+  position: absolute;
+  top: 230px;
+  left: 60px;
+  font-size: 32px
+}
+
+#slide-1-subline {
+  position: absolute;
+  top: 270px;
+  left: 61px;
+  font-size: 16px
+}
+
+#controls {
+  opacity: 0;
+}
+
+#controls div {
+  z-index: 99;
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: .6s;
+}
+
+#prev {
+  left: 0;
+  background-image: url("images/btn_arrow.png");
+  background-size: 20px 20px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+#prev:hover {
+  background-image: url("images/btn_arrowOver.png");
+}
+
+#next {
+  right: 0;
+  background-image: url("images/btn_arrow.png");
+  background-size: 20px 20px;
+  transform: translateY(-50%);
+}
+
+#next:hover {
+  background-image: url("images/btn_arrowOver.png");
+}

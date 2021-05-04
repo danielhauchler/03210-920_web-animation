@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      position: absolute;
+      left: 20px;
+      width: 100px;
+      height: 100px;
+    }
+
+    #box-1 {
+      top: 50px;
+      background-color: blueviolet;
+    }
+
+    #box-2 {
+      top: 200px;
+      background-color: cornflowerblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="box-1"></div>
+  <div class="box" id="box-2"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+
+  <script>
+
+    var box1 = document.getElementById('box-1'),
+        box2 = document.getElementById('box-2');
+
+    // .to
+    // von aktuellen css styles zu gsap styles
+    // .from
+    // von gsap style zu css styles
+    gsap.to(box1, 5, {x:500, y:500, delay: 2})
+    gsap.from(box2, 5, {x:500, y:500, css: {"background-color":"aquamarine"},  delay: 2})
+
+  </script>
+</body>
+</html>

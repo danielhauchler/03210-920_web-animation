@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Slider</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="slider">
+
+    <div id="controls">
+      <div id="prev"></div>
+      <div id="next"></div>
+    </div>
+
+    <div id="slides">
+
+      <div id="slide-1">
+        <div id="slide-1-bg"></div>
+        <div id="slide-1-headline">
+          <span id="type"></span>
+        </div>
+        <div id="slide-1-headline-bg"></div>
+        <div id="taxi1"></div>
+        <div id="taxi2"></div>
+        <div id="taxi3"></div>
+      </div>
+
+      <div id="slide-2">
+
+      </div>
+
+      <div id="slide-3">
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.7/typed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script src="http://sharedlibraries.danielhauchler.de/anim_panel.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <script>
+
+    // elements
+    var slider = document.getElementById('slider'),
+      controls = document.getElementById('controls'),
+      prev = document.getElementById('prev'),
+      next = document.getElementById('next'),
+
+      // slide 1
+      slideOne = document.getElementById('slide-1'),
+      slideOnebg = document.getElementById('slide-1-bg'),
+      slideOneHeadline = document.getElementById('slide-1-headline'),
+      slideOneHeadlineBg = document.getElementById('slide-1-headline-bg'),
+      taxi1 = document.getElementById('taxi1'),
+      taxi2 = document.getElementById('taxi2'),
+
+      // slide 2
+      slideTwo = document.getElementById('slide-2'),
+
+      // slide 3
+      slideThree = document.getElementById('slide-3');
+
+
+    var tlSlideOne = new gsap.timeline(),
+      tlSlideTwo = new gsap.timeline(),
+      tlSlideThree = new gsap.timeline();
+
+    tlSlideOne.pause()
+      .to(slideOne, .6, { opacity: 1 })
+      .to(controls, .6, { opacity: 1 }, '+=.6')
+      .to(slideOnebg, 1, { scale: 1.4 }, '+=.3')
+      .from(slideOneHeadlineBg, .6, {width: "0", ease: Power1.easeInOut }, '+=.3')
+      .to(slideOneHeadline, .1, { onComplete: typePanel1 }, '-=.6')
+      .from(taxi1, 5, { left: 73, top: -43, ease: Power4.easeOut })
+      .from(taxi2, 5, { left: 54, top: 350, ease: Power4.easeOut }, '-=5')
+      .to(taxi1, 4, { left: 463, top: 351, ease: Power2.easeIn })
+      .to(taxi3, 4, {left: 660, top: 89, ease: Power2.easeOut}, '-=8')
+      .to(taxi3, .6, {left: 637, top: 111, ease: Power2.easeIn})
+      .to(taxi3, 1.2, {left: 645, top: 156, rotate: 0})
+      .to(taxi3, 4, {left: 792, top: 295, ease: Power2.easeOut})
+
+
+
+      .to(slideOne, 1, { opacity: 1 }, '+=15')
+
+
+    function typePanel1() {
+      Typed.new('#type', {
+        strings: ["The American Dream."],
+        stringsElement: null,
+        typeSpeed: 40,
+        startDelay: 100,
+        attr: null,
+        contentType: 'html',
+        showCursor: false,
+      });
+    }
+
+    tlSlideTwo.pause();
+    tlSlideThree.pause();
+
+
+    var index = 1;
+
+    if (index == 1) {
+      tlSlideOne.play(0)
+    }
+
+    // AnimPanel
+    new AnimPanel(tlSlideOne)
+
+  </script>
+</body>
+
+</html>

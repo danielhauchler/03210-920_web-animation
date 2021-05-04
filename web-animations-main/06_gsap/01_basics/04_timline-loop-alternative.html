@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loop</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: cornflowerblue;
+    }
+    #end {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 26px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div id="end">END</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script type="text/javascript" src="http://sharedlibraries.danielhauchler.de/anim_panel.js"></script>
+
+  <script>
+
+    // element variables
+    var box = document.getElementById('box')
+    var end = document.getElementById('end')
+
+    // tl = timeline
+    var tl = new gsap.timeline()
+
+    tl.add('start')
+      .to( box, 2, { rotate: -360, ease: Back.easeOut }, 'start+=.3')
+      .to(box, 2, { x: 200, y: 200, }, 'start+=.3')
+
+      .set(box, {onComplete: restart})
+
+     
+      // Restart the animation according to the desired loops
+      function done() {
+        tl.restart();
+      }
+    
+      // Loop Counter
+      var i = 0
+
+      // Loop function with Counter
+      function restart() {
+        if (i < 3) {
+            gsap.to(box, 2, { rotate: 180, x: 0, y: 0, ease: Power3.easeIn, onComplete: done});
+            i++;
+        } else {
+          gsap.to(end, .6, {opacity: 1})
+        }
+      }
+
+    console.log(tl.duration());
+    // new AnimPanel(tl)
+
+  </script>
+</body>
+
+</html>

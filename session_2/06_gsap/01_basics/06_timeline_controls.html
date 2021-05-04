@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controls</title>
+  <style>
+    #box-holder {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: darkorchid;
+    }
+    #controls {
+      display: flex;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 400px;
+      height: 50px;
+    }
+    .btn {
+      display: inline-block;
+      width: 33.3%;
+      height: 50px;
+      background-color:deeppink;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box-holder">
+    <div id="box"></div>
+    <div id="controls">
+      <div id="play" class="btn"><span>play</span></div>
+      <div id="pause" class="btn"><span>pause</span></div>
+      <div id="reverse" class="btn"><span>reverse</span></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script type="text/javascript" src="http://sharedlibraries.danielhauchler.de/anim_panel.js"></script>
+
+  <script>
+
+    // element variables
+    var box = document.getElementById('box')
+
+    // tl = timeline
+    var tl = new gsap.timeline({repeat: -1})
+
+    tl.to(box, .6, { y: 300, rotate: 90, ease: Power3.easeInOut })
+      .to(box, .6, { x: 300, rotate: 180, ease: Power3.easeInOut })
+      .to(box, .6, { y: 0, rotate: 270, ease: Power3.easeInOut })
+      .to(box, .6, { x: 0, rotate: 360, ease: Power3.easeInOut })
+
+    console.log(tl.duration());
+    // new AnimPanel(tl)
+
+    // btn eventlisteners
+    document.getElementById('play').addEventListener("click", function(){ tl.play(); });
+    document.getElementById('pause').addEventListener("click", function(){ tl.pause(); });
+    document.getElementById('reverse').addEventListener("click", function(){ tl.reverse(); });
+
+  </script>
+</body>
+
+</html>

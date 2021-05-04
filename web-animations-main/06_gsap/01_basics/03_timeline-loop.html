@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loop</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: cornflowerblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script type="text/javascript" src="http://sharedlibraries.danielhauchler.de/anim_panel.js"></script>
+
+  <script>
+
+    // element variables
+    var box = document.getElementById('box')
+    var end = document.getElementById('end')
+
+    // tl = timeline
+    var tl = new gsap.timeline({repeat: -1, repeatDelay: 1})
+
+    tl.add('start')
+      .to( box, 2, { rotate: -360, ease: Back.easeOut }, 'start+=.3')
+      .to(box, 2, { x: 200, y: 200, }, 'start+=.3')
+
+    console.log(tl.duration());
+    // new AnimPanel(tl)
+
+  </script>
+</body>
+
+</html>
