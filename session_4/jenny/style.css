@@ -1,0 +1,21 @@
+#ring_two {
+    transform-origin: 189px 189px;
+}
+
+#btn_klick_mich {
+    display: none;
+}
+
+#KLICK_MICH_ {
+    display: none;
+}
+
+#Deepless {
+    opacity: 5%;
+}
+
+.cls-1 {
+  stroke: #000;
+  stroke-width: 1px;
+  fill-rule: evenodd;
+}
